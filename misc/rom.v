@@ -11,7 +11,11 @@ module rom
     output reg  [data_width - 1:0] q,
     input  wire                    cen);
 
-   (* ram_init_file = "j1.mif" *) reg [data_width - 1:0] mem[0:size - 1];
+   reg [data_width - 1:0] mem[0:size - 1];
+
+   initial begin
+    $readmemh("j1.hex", mem);
+   end
 
    always @(posedge clock)
      if (cen)
