@@ -4,7 +4,8 @@
 
 module wb_rom
   #(parameter size       = 'h1000, // ROM4096x16
-    parameter waitcycles = 0)
+    parameter waitcycles = 0,
+    parameter INIT_FILE)
    (if_wb.slave wb);
 
    wire valid;   // Wishbone bus valid
@@ -20,7 +21,7 @@ module wb_rom
 `endif
 
    rom
-     #(.size(size))
+     #(.size(size), .INIT_FILE(INIT_FILE))
    rom
      (.clock   (wb.clk),
       .address (wb.adr[$clog2(size) - 1:0]),
