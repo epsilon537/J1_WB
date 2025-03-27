@@ -2,7 +2,7 @@
 
 `default_nettype none
 
-module wb_ram
+module wb_spram
   #(parameter size       = 'h800, // RAM2048x16
     parameter waitcycles = 0)
    (if_wb.slave wb);
